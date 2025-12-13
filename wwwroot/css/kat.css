@@ -1,0 +1,27 @@
+.kat-background{
+    margin:0;
+    padding:0;
+    background-image:url("/images/background2.png");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    display:flex;
+    justify-content:center;
+    align-items:center; 
+    flex-direction: column;
+    text-shadow:2px 2px 5px black;
+    padding:20px;
+    text-align:center;
+    width:100%;
+    height:100%;
+    
+}
+
+.kat-card{
+    width: 70%;
+    margin-top: 10px;
+}
+
+.kat-background h2{
+    color:white;
+}

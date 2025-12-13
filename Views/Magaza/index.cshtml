@@ -1,0 +1,131 @@
+@using System.Security.Cryptography
+@model List<VeriTabaniProje.Models.Magaza>
+
+
+@section Styles {
+	<link rel="stylesheet" href="/css/kat.css">
+}
+
+<div class="kat-background">
+	@if (TempData["Error"] != null)
+	{
+		<div class="alert alert-danger">@TempData["Error"]</div>
+	}
+
+	@if (TempData["Success"] != null)
+	{
+		<div class="alert alert-success">@TempData["Success"]</div>
+	}
+
+	<div class="d-flex justify-content-between w-100 mb-2">
+		<h2>Magazalar</h2>
+		<form method="get" asp-controller="Index" class="mb-3 d-flex">
+			<input type="text" name="search" value="@Context.Request.Query["search"]" class="form-control me-2"
+				placeholder="Mağaza ara..." />
+			<button stype="submit" class="btn btn-primary">Ara</button>
+		</form>
+		<a asp-action="Create" asp-controller="Magaza" class="btn btn-success mt-1" role="button" aria-pressed="true"><i
+				class="bi bi-person-plus"></i> Ekle</a>
+	</div>
+
+
+	<table class="table table-stripped table-dark border">
+		<thead>
+			<tr>
+				<th scope="col">Magaza No</th>
+				<th scope="col">Kat No</th>
+				<th scope="col">Magaza Adı</th>
+				<th scope="col">Müdür</th>
+				<th scope="col">Magaza Sahibi</th>
+				<th scope="col">Elemanlar</th>
+				<th scope="col">Ürünler</th>
+				<th scope="col">Stok</th>
+				<th scope="col">Fiyat</th>
+				<th scope="col"></th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (Magaza m in Model)
+			{
+
+				<tr>
+
+					<td>
+						@m.Magazano
+					</td>
+
+					<td>
+						@m.Katno
+					</td>
+
+					<td>
+						@m.Adi
+					</td>
+
+					<td>
+						@m.MagazamudurunoNavigation.Adi @m.MagazamudurunoNavigation.Soyadi
+					</td>
+
+					<td>
+						@m.MagazasahibinoNavigation.Adi @m.MagazasahibinoNavigation.Soyadi
+					</td>
+
+					<td>
+						<ul>
+							@foreach (Magazaelemani me in m.Magazaelemanis)
+							{
+								<li>
+									@me.Adi @me.Soyadi
+								</li>
+							}
+						</ul>
+					</td>
+
+					<td>
+						<ul>
+							@foreach (Urunler u in m.Urunnos)
+							{
+								<li>
+									@u.Adi
+								</li>
+							}
+						</ul>
+					</td>
+					<td>
+						<ul>
+							@foreach (Urunler u in m.Urunnos)
+							{
+								<li>
+									@u.Stok
+								</li>
+							}
+						</ul>
+					</td>
+						<td>
+						<ul>
+							@foreach (Urunler u in m.Urunnos)
+							{
+								<li>
+									@u.Fiyat
+								</li>
+							}
+						</ul>
+					</td>
+					<td>
+						<div class="d-flex flex-column  g-1">
+							<a asp-action="Edit" asp-route-id="@m.Magazano" asp-controller="Magaza"
+								class="btn btn-primary mt-1" role="button" aria-pressed="true"><i
+									class="bi bi-pencil-square"></i> Düzenle</a>
+							<a asp-action="Delete" asp-route-id="@m.Magazano" asp-controller="Magaza"
+								class=" btn btn-danger mt-1" role="button" aria-pressed="true"><i class="bi bi-x-square">
+									Sil</i></a>
+						</div>
+
+					</td>
+				</tr>
+
+
+			}
+		</tbody>
+	</table>
+</div>

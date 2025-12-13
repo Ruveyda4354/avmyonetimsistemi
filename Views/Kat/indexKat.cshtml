@@ -1,0 +1,56 @@
+@using System.Security.Cryptography
+@model VeriTabaniProje.Models.Kat
+
+@section Styles {
+	<link rel="stylesheet" href="/css/kat.css">
+}
+
+<div class="kat-background">
+	<h2>Katlar</h2>
+
+	<table class="table table-stripped table-dark border">
+		<thead>
+			<tr>
+				<th scope="col"></th>
+				<th scope="col">Kat No</th>
+				<th scope="col">Magazalar</th>
+				<th scope="col">Personeller</th>
+				<th scope="col"></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th scope="row"></th>
+				<td>
+					@Model.Katno
+				</td>
+				<td>
+					<ul>
+						@foreach (Magaza m in Model.Magazas)
+						{
+							<li>@m.Adi</li>
+						}
+					</ul>
+				</td>
+				<td>
+					<ul>
+						@foreach (Personel p in Model.Personels)
+						{
+							<li>@p.Adi @p.Soyadi</li>
+						}
+					</ul>
+				</td>
+				<td>
+					<div class="d-flex flex-column  g-1">
+						<a asp-action="Edit" asp-route-id="@Model.Katno" asp-controller="Kat"
+							class="btn btn-primary mt-1" role="button" aria-pressed="true"><i
+								class="bi bi-pencil-square"></i> Düzenle</a>
+						<a asp-action="Delete" asp-route-id="@Model.Katno" asp-controller="Kat"
+							class=" btn btn-danger mt-1" role="button" aria-pressed="true"><i class="bi bi-x-square">
+								Sil</i></a>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

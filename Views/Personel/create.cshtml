@@ -1,0 +1,62 @@
+@model VeriTabaniProje.Models.Personel
+
+@section Styles {
+	<link rel="stylesheet" href="/css/kat.css" />
+}
+@if (TempData["Error"] != null)
+{
+	<div class="alert alert-danger">
+		@TempData["Error"]
+	</div>
+}
+<div class="kat-background">
+	<div class="d-flex justify-content-between w-100">
+		<h2>Personel Ekle</h2>
+
+		<a asp-action="Index" class="btn btn-secondary mt-1">Geri</a>
+	</div>
+	<div class="main-content w-100" style="padding-top:20px;">
+		<div class="w-100 container">
+
+			<form asp-action="Create" asp-controller="Personel" enctype="multipart/form-data" method="post">
+				@Html.AntiForgeryToken()
+				<input type="hidden" asp-for="Personelno" />
+
+				<table class="table table-stripped table-dark border">
+					<thead>
+						<tr>
+							<th>Profil</th>
+							<th>Personel Adı</th>
+							<th>Kat No</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<input type="file" name="Foto" class="form-control" />
+
+							</td>
+							<td>
+								<input type="text" name="AdSoyad" class="form-control text-center"
+									placeholder="Ad ve Soyad" required />
+							</td>
+							<td>
+								<select name="Katno" class="form-select text-center" required>
+									<option value="">Seçiniz</option>
+									<option value="0">0</option>
+									<option value="1">1</option>
+									<option value="2">2</option>
+								</select>
+							</td>
+							<td>
+								<button type="submit" class="btn btn-success">
+									<i class="bi bi-check-circle"></i>Kaydet</button>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</form>
+		</div>
+	</div>
+</div>

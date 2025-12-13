@@ -1,0 +1,66 @@
+@model VeriTabaniProje.Models.MagazaElemanEditViewModel
+@section Styles {
+    <link rel="stylesheet" href="/css/kat.css">
+}
+@if (ViewBag.Errors != null)
+{
+    <div class="alert alert-danger">
+        @foreach (var err in ViewBag.Errors)
+        {
+            <div>@err</div>
+        }
+    </div>
+}
+<div class="kat-background">
+    <h2 style="color:white;">@Model.Id. - Nolu Magaza Elemanı Düzenleme</h2>
+    <div class="main-content w-100" style="padding-top:20px;">
+        <div class=" w-100">
+            <table class="table table-stripped table-dark border">
+                <thead>
+                    <tr>
+                        <th>Profil</th>
+                        <th>Adı </th>
+                        <th>Soyadı</th>
+                        <th>Magaza</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <form asp-action="Edit" asp-controller="Magazaelemani" method="post" enctype="multipart/form-data">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" asp-for="Id" />
+                    <tbody>
+                        <tr>
+
+                            <td>
+                                <img src="~/images/profil/profil/@Model.Profilfoto" alt="profil Foto"
+                                    style="width:20%;height:20%;border-radius:50%;margin-right:10px;">
+                                <input type="file" name="Foto" />
+                            </td>
+                            <td> <input asp-for="Adi" class="form-control" />
+
+                            </td>
+                            <td> <input asp-for="Soyadi" class="form-control" /></td>
+
+                            <td>
+                                <select asp-for="Magazano" class="form-control me-2" asp-items="Model.MagazaList">
+                                    <option value="@Model.Magazano">--Seçiniz--</option>
+                                </select>
+
+                            </td>
+                            <td>
+
+                                <button type="submit" class="btn btn-success">Güncelle</button>
+                            </td>
+
+
+
+                        </tr>
+
+
+                    </tbody>
+                </form>
+            </table>
+        </div>
+    </div>
+
+</div>

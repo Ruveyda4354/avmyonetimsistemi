@@ -1,0 +1,292 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.13.1/font/bootstrap-icons.min.css"
+        integrity="sha512-t7Few9xlddEmgd3oKZQahkNI4dS6l80+eGEzFQiqtyVYdvcSG2D3Iub77R20BdotfRPA9caaRkg1tyaJiPmO0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="~/css/layout.css">
+    @RenderSection("Styles", required: false)
+
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="row g-0 h-100">
+
+        <div id="menu" class="d-flex col-2">
+            <div id="anaMenu" class="col-12 h-100">
+                <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark w-100 h-100">
+                    <a href="/"
+                        class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none ">
+                        <i class="bi bi-incognito"></i>
+                        <span class="fs-4">BPM AVM</span> </a>
+                    <hr>
+                    <ul class="nav nav-pills flex-column mb-auto">
+                        <div id="option1">
+                            <li class="nav-item">
+                                <a class="nav-link text-white" asp-controller="Kat" asp-action="Index">
+                                    <i class="bi bi-alt"></i>
+                                    Kat
+                                </a>
+                            </li>
+                        </div>
+                        <div id="option2">
+                            <li>
+                                <a class="nav-link text-white" asp-controller="Kisi" asp-action="Index">
+                                    <i class="bi bi-person"></i>
+                                    Kişiler
+                                </a>
+                            </li>
+                        </div>
+                        <div id="option3">
+                            <li>
+                                <a class="nav-link text-white" asp-controller="Otopark" asp-action="Index">
+                                    <i class="bi bi-car-front"></i>
+                                    Otopark
+                                </a>
+                            </li>
+                        </div>
+                        <div id="option4">
+                            <li>
+                                <a class="nav-link text-white" asp-action="Index" asp-controller="Magaza">
+                                    <i class="bi bi-shop"></i>
+                                    Mağazalar
+                                </a>
+                            </li>
+                        </div>
+                        <div id="option5">
+                            <li> <a class="nav-link text-white" asp-action="Index" asp-controller="Gelir">
+                                    <i class="bi bi-bar-chart-line"></i>
+                                    Gelir
+                                </a> </li>
+                        </div>
+                        <div id="option6">
+                            <li> <a class="nav-link text-white" asp-action="Index" asp-controller="Gider">
+                                    <i class="bi bi-bar-chart-line"></i>
+                                    Gider
+                                </a> </li>
+                        </div>
+                        <div id="option7">
+                            <li> <a class="nav-link text-white" asp-action="Index" asp-controller="Eglencemerkezi">
+                                    <i class="bi bi-controller"></i>
+                                    Eğlence merkezi
+                                </a> </li>
+                        </div>
+                    </ul>
+                    <hr>
+                    <div class="dropdown"> <a href="#"
+                            class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                            data-bs-toggle="dropdown" aria-expanded="false"> <img src="https://github.com/mdo.png"
+                                alt="" width="32" height="32" class="rounded-circle me-2"> <strong>mdo</strong> </a>
+                        <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                            <li><a class="dropdown-item" href="#">New project...</a></li>
+                            <li><a class="dropdown-item" href="#">Settings</a></li>
+                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Sign out</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div id="yanMenu" class=" h-100">
+                <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark w-100 h-100">
+                    <div id="menu1" class="d-none ms-0  h-100">
+                        <div class="d-flex flex-column p-3 text-bg-dark " style="height: 100vh"> <a href="/"
+                                class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                                <ul class="nav nav-pills flex-column mb-auto">
+                                    <li class="nav-item">
+                                        <a class="nav-link text-white" asp-controller="Kat" asp-action="indexKat" 
+                                            asp-route-id="-2">
+                                            <i class="bi bi-dot"></i>
+                                            -2
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link text-white" asp-controller="Kat" asp-action="indexKat"
+                                            asp-route-id="-1">
+                                            <i class="bi bi-dot"></i>
+                                            -1
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link text-white" asp-controller="Kat" asp-action="indexKat"
+                                            asp-route-id="0">
+                                            <i class="bi bi-dot"></i>
+                                            Zemin Kat
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link text-white" asp-controller="Kat" asp-action="indexKat"
+                                            asp-route-id="1">
+                                            <i class="bi bi-dot"></i>
+                                            1
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link text-white" asp-controller="Kat" asp-action="indexKat"
+                                            asp-route-id="2">
+                                            <i class="bi bi-dot"></i>
+                                            2
+                                        </a>
+                                    </li>
+                                </ul>
+
+                        </div>
+                    </div>
+                    <div id="menu2" class="d-none h-100">
+                        <div class="d-flex flex-column p-3 text-bg-dark " style="height: 100vh">
+
+                            <ul class="nav nav-pills flex-column mb-auto">
+
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link text-white">
+                                        <i class="bi bi-dot"></i>
+                                        Personel
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link text-white">
+                                        <i class="bi bi-dot"></i>
+                                        Müşteriler
+                                    </a>
+                                </li>
+                                <li> <a href="#" class="nav-link text-white">
+                                        <i class="bi bi-dot"></i>
+                                        Tedarikçiler
+                                    </a> </li>
+                                <li> <a href="#" class="nav-link text-white">
+                                        <i class="bi bi-dot"></i>
+                                        Mağaza Elamanı
+                                    </a> </li>
+                                <li> <a href="#" class="nav-link text-white">
+                                        <i class="bi bi-dot"></i>
+                                        Mağaza Sahipleri
+                                    </a> </li>
+                                <li> <a href="#" class="nav-link text-white">
+                                        <i class="bi bi-dot"></i>
+                                        Mağaza Müdürleri
+                                    </a> </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                    <div id="menu3" class="d-none h-100">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link text-white">
+                                <i class="bi bi-dot"></i>
+                                -2.Kat
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="nav-link text-white">
+                                <i class="bi bi-dot"></i>
+                                -1.Kat
+                            </a>
+                        </li>
+                    </div>
+                    <div id="menu4" class="d-none h-100">
+                        @await Component.InvokeAsync("MagazaMenu")
+                    </div>
+                    <div id="menu5" class="d-none h-100">
+                        <i class="bi bi-dot"></i>
+                        Gelir
+                    </div>
+                    <div id="menu6" class="d-none h-100">
+                        <i class="bi bi-dot"></i>
+                        Gider
+                    </div>
+                    <div id="menu7" class="d-none h-100">
+                        <div class="d-flex flex-column p-3 text-bg-dark " style="height: 100vh">
+                            <ul class="nav nav-pills flex-column mb-auto">
+                                <li class="nav-item">
+                                    <a asp-action="Index" asp-controller="Eglencemerkezi" class="nav-link text-white">
+                                        <i class="bi bi-dot"></i>
+                                        Eğlence Merkezi 1
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div id="tables" class="col-10">
+            @RenderBody()
+        </div>
+
+    </div>
+
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            const anaMenu = document.getElementById("anaMenu");
+            const yanMenu = document.getElementById("yanMenu");
+            const menuDiv = document.getElementById("menu");
+            const tables = document.getElementById("tables");
+            const options = [];
+            const menus = [];
+
+            // option ve menüleri diziye al
+            for (let i = 1; i <= 7; i++) {
+                options.push(document.getElementById("option" + i));
+                menus.push(document.getElementById("menu" + i));
+            }
+
+
+            let activeMenu = null; // Şu anda açık menü
+
+            options.forEach((option, index) => {
+
+                const menu = menus[index];
+
+                option.addEventListener("mouseenter", () => {
+                    // Önceki menüyü kapat
+                    if (activeMenu && activeMenu !== menu) {
+                        activeMenu.classList.add("d-none");
+                    }
+
+                    menuDiv.classList.remove("col-2");
+                    menuDiv.classList.add("col-4");
+                    tables.classList.remove("col-10");
+                    tables.classList.add("col-8");
+                    anaMenu.classList.remove("col-12");
+                    anaMenu.classList.add("col-6");
+                    yanMenu.classList.add("col-6");
+
+                    menu.classList.remove("d-none");
+                    activeMenu = menu;
+                });
+            });
+
+        });
+        function updateVH() {
+            let vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
+        }
+        updateVH();
+        window.addEventListener('resize', updateVH);
+    </script>
+
+</body>
+
+</html>

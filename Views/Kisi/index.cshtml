@@ -1,0 +1,96 @@
+@using System.Diagnostics.Eventing.Reader
+@model List<VeriTabaniProje.Models.KisiTur>
+
+@section Styles {
+	<link rel="stylesheet" href="/css/kat.css">
+}
+
+<div class="kat-background">
+	<h2>Kisiler</h2>
+	<table class="table table-stripped table-dark border">
+		<thead>
+			<tr>
+				<th scope="col"></th>
+				<th scope="col">Kişi Türü</th>
+				<th scope="col">Kişi Sayısı</th>
+				<th scope="col"></th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var item in Model)
+			{
+
+				<tr>
+					<th scope="row"></th>
+
+					<td>
+						@item.Kisituru
+					</td>
+					<td>
+						@item.Sayisi
+					</td>
+
+					<td>
+						@if (@item.Kisituru == "Mağaza Sahibi")
+						{
+							<div class="w-40">
+								<a asp-action="Index" asp-controller="MagazaSahibi" class="btn btn-primary mt-1" role="button"
+									aria-pressed="true"><i class="bi bi-pencil-square"></i>Görüntüle</a>
+
+							</div>
+						}
+						else if (@item.Kisituru == "Mağaza Müdürü")
+						{
+							<div class="w-40">
+								<a asp-action="Index" asp-controller="MagazaMuduru" class="btn btn-primary mt-1" role="button"
+									aria-pressed="true"><i class="bi bi-pencil-square"></i>Görüntüle</a>
+
+							</div>
+						}
+						else if (@item.Kisituru == "Personel")
+						{
+							<div class="w-40">
+								<a asp-action="Index" asp-controller="Personel" class="btn btn-primary mt-1" role="button"
+									aria-pressed="true"><i class="bi bi-pencil-square"></i>Görüntüle</a>
+
+							</div>
+						}
+						else if (@item.Kisituru == "Tedarikçi")
+						{
+							<div class="w-40">
+								<a asp-action="Index" asp-controller="Tedarikci" class="btn btn-primary mt-1" role="button"
+									aria-pressed="true"><i class="bi bi-pencil-square"></i> Görüntüle</a>
+
+							</div>
+						}
+						else if (@item.Kisituru == "Avm Yöneticisi")
+						{
+							<div class="w-40">
+								<a asp-action="Index" asp-controller="AvmYoneticisi" class="btn btn-primary mt-1" role="button"
+									aria-pressed="true"><i class="bi bi-pencil-square"></i>Görüntüle</a>
+
+							</div>
+						}
+						else if (@item.Kisituru == "Müşteri")
+						{
+							<div class="w-40">
+								<a asp-action="Index" asp-controller="Musteri" class="btn btn-primary mt-1" role="button"
+									aria-pressed="true"><i class="bi bi-pencil-square"></i>Görüntüle</a>
+
+							</div>
+						}
+						else if (@item.Kisituru == "Mağaza Elemanı")
+						{
+							<div class="w-40">
+								<a asp-action="Index" asp-controller="MagazaElemani" class="btn btn-primary mt-1" role="button"
+									aria-pressed="true"><i class="bi bi-pencil-square"></i>Görüntüle</a>
+
+							</div>
+						}
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+
+</div>

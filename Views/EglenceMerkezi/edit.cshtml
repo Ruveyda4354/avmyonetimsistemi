@@ -1,0 +1,45 @@
+@model VeriTabaniProje.Models.Eglencemerkezi
+
+@section Styles {
+	<link rel="stylesheet" href="/css/kat.css">
+}
+
+<div class="kat-background">
+	<h2 style="color:white;">Oyuncak Düzenle</h2>
+	<div class="main-content w-100" style="padding-top:20px;">
+		<div class="w-100 container">
+			<form asp-controller="Eglencemerkezi" asp-action="Edit2" method="post">
+				<input type="hidden" asp-for="Oyuncakno" />
+
+				<table class="table table-stripped table-dark border">
+					<thead>
+						<tr>
+							<th style="width: 20%;">Oyuncak Numarası</th>
+							<th style="width: 50%;">Oyuncak Adı</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="align-middle">
+								<span class="fw-bold">@Model.Oyuncakno</span>
+							</td>
+							<td>
+								<input asp-for="Oyuncaklar" type="text" class="form-control text-center"
+									style="max-width:150px;" required />
+							</td>
+							<td>
+								<div class="f-flex gap-2">
+									<button type="submit" class="btn btn-success">
+										<i class="bi bi-check-circle"></i>Kaydet
+									</button>
+									<a asp-action="Index" class="btn btn-secondary">İptal</a>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</form>
+		</div>
+	</div>
+</div>

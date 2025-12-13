@@ -1,0 +1,20 @@
+.home-background{
+  margin:0;
+  padding:0;
+  background-image:url("/images/background.png");
+  background-size:cover;
+  background-position: center;
+  background-repeat:no-repeat;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction:column;
+  color: white;
+  text-shadow:2px 2px 5px black;
+  padding:20px;
+  text-align: center;
+  height:100vh;
+}
+.home-background h1{
+    font-size: 50px!important;
+}

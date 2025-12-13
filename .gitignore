@@ -1,0 +1,10 @@
+# Build outputs
+bin/
+obj/
+
+# VS Code / Visual Studio
+.vs/
+.vscode/
+
+# Secrets
+appsettings.json
