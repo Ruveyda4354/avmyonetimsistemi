@@ -1,0 +1,84 @@
+@model VeriTabaniProje.Models.MagazaEditViewModel
+@section Styles {
+	<link rel="stylesheet" href="/css/kat.css">
+}
+
+@if (!ViewData.ModelState.IsValid)
+{
+	<div class="alert alert-danger">
+		@Html.ValidationSummary()
+	</div>
+}
+
+<div class="kat-background">
+	<h2 style="color:white;">@Model.Magazano - Nolu Mağaza Düzenleme</h2>
+
+	<form asp-action="EditConfirmed" asp-controller="Magaza" asp-route-id="@Model.Magazano" method="post">
+		@Html.AntiForgeryToken()
+		<input type="hidden" asp-for="Magazano" />
+
+		<div class="main-content w-100" style="padding-top:20px;">
+			<div class="w-100">
+				<table class="table table-striped table-dark border">
+					<thead>
+						<tr>
+							<th>Mağaza Adı</th>
+							<th>Müdür</th>
+							<th>Mağaza Sahibi</th>
+							<th>Elemanlar</th>
+							<th>Ürün Adı</th>
+							<th>Stok</th>
+							<th>Fiyat</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<input asp-for="Adi" class="form-control" />
+							</td>
+							<td>
+								@Model.MagazamudurunoNavigation?.Adi @Model.MagazamudurunoNavigation?.Soyadi
+							</td>
+							<td>
+								@Model.MagazasahibinoNavigation?.Adi @Model.MagazasahibinoNavigation?.Soyadi
+							</td>
+							<td>
+								<ul>
+									@foreach (var me in Model.Magazaelemanis)
+									{
+										<li>@me.Adi @me.Soyadi</li>
+									}
+								</ul>
+							</td>
+							<td>
+								@for (int i = 0; i < Model.UrunListesi.Count; i++)
+								{
+									<input type="hidden" asp-for="UrunListesi[i].UrunId" />
+									<input type="text" asp-for="UrunListesi[i].UrunAdi" class="form-control" />
+								}
+							</td>
+							<td>
+								@for (int i = 0; i < Model.UrunListesi.Count; i++)
+								{
+									<input type="number" asp-for="UrunListesi[i].Stok" class="form-control form-control-sm"
+										style="width: 80px;" />
+								}
+							</td>
+							<td>
+								@for (int i = 0; i < Model.UrunListesi.Count; i++)
+								{
+									<input type="number" asp-for="UrunListesi[i].Fiyat" class="form-control form-control-sm"
+										style="width: 80px;" />
+								}
+							</td>
+							<td>
+								<button type="submit" class="btn btn-success">Güncelle</button>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</form>
+</div>

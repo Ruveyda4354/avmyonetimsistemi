@@ -1,0 +1,55 @@
+@using System.Security.Cryptography
+@model List<VeriTabaniProje.Models.Gider>
+
+@section Styles {
+	<link rel="stylesheet" href="/css/kat.css">
+}
+<div class="kat-background">ü
+	<div class="d-flex justify-content-between w-100">
+		<h2>Mağaza Giderleri</h2>
+
+		<form method="get" asp-action="Index" class="mb-3 d-flex">
+			<input type="text" name="search" value="@Context.Request.Query["search"]" class="form-control me-2"
+				placeholder="Mağaza ara...">
+			<button type="submit" class="btn btn-primary">Ara</button>
+		</form>
+	</div>
+	<table class="table table-stripped table-dark border">
+		<thead>
+			<tr>
+				<td scope="col"></td>
+				<td scope="col">Gider No</td>
+				<td scope="col">Mağaza Adı</td>
+				<td scope="col">Gider Miktarı</td>
+				<td scope="col"></td>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var gider in Model)
+			{
+				<tr>
+					<th scope="row"></th>
+					<td>
+						@gider.Giderno
+					</td>
+					<td>
+						@gider.MagazanoNavigation?.Adi
+					</td>
+					<td>
+						@gider.Gidermiktari
+					</td>
+					<td>
+						<div class="d-flex flex-column g-1">
+							<a asp-action="Edit" asp-route-id="@gider.Giderno" asp-controller="Gider"
+								class="btn btn-primary mt-1" role="button" aria-pressed="true"><i
+									class="bi bi-pencil-square"></i>Düzenle</a>
+							<a asp-action="Delete" asp-route-id="@gider.Giderno" asp-controller="Gider"
+								class="btn btn-danger mt-1" role="button" aria-pressed="true"><i
+									class="bi bi-x-square">Sil</i></a>
+						</div>
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+</div>

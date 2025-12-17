@@ -1,0 +1,65 @@
+@using System.Security.Cryptography
+@model List<VeriTabaniProje.Models.Kat>
+
+@section Styles {
+  <link rel="stylesheet" href="/css/kat.css">
+}
+
+<div class="kat-background">
+  <div class="d-flex justify-content-between w-100">
+    <h2>Katlar</h2>
+    <form method="get" asp-action="Index" class="d-flex mb-2 d-flex">
+      <input type="text" name="search" value="@Context.Request.Query["search"]" class="form-control me-2" placeholder="Kat No ara...">
+      <button type="submit" class="btn btn-primary">Ara</button>
+    </form>
+  </div>
+  <table class="table table-stripped table-dark border">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">Kat No</th>
+        <th scope="col">Magazalar</th>
+        <th scope="col">Personeller</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach (Kat kat in Model)
+      {
+        <tr>
+          <th scope="row"></th>
+          <td>
+            @kat.Katno
+          </td>
+          <td>
+            <ul>
+              @foreach (Magaza m in kat.Magazas)
+              {
+                <li>@m.Adi</li>
+              }
+            </ul>
+          </td>
+          <td>
+            <ul>
+              @foreach (Personel p in kat.Personels)
+              {
+                <li>@p.Adi @p.Soyadi</li>
+              }
+            </ul>
+          </td>
+          <td>
+            @if (!(kat.Katno == -1 || kat.Katno == -2))
+            {
+              <div class="d-flex flex-column  g-1">
+                <a asp-action="Edit" asp-route-id="@kat.Katno" asp-controller="Kat" class="btn btn-primary mt-1"
+                  role="button" aria-pressed="true"><i class="bi bi-pencil-square"></i> Düzenle</a>
+                <a asp-action="Delete" asp-route-id="@kat.Katno" asp-controller="Kat" class=" btn btn-danger mt-1"
+                  role="button" aria-pressed="true"><i class="bi bi-x-square"> Sil</i></a>
+              </div>
+            }
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

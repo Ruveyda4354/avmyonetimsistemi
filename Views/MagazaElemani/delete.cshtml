@@ -1,0 +1,48 @@
+@model VeriTabaniProje.Models.Magazaelemani
+@section Styles {
+    <link rel="stylesheet" href="/css/kat.css">
+}
+
+<div class="kat-background">
+    @if (TempData["Error"] != null)
+{
+	<div class="alert alert-danger">
+		@TempData["Error"]
+	</div>
+}
+    <h2 style="color:white;">@Model.Magazaelemanno. - Nolu Magaza Elemanı Düzenleme</h2>
+    <div class="main-content w-100" style="padding-top:20px;">
+        <div class=" w-100">
+            <table class="table table-stripped table-dark border">
+                <thead>
+                    <tr>                  
+                        <th></th>
+                        <th>Adı </th>
+                        <th>Soyadı</th>
+                        <th>Magaza</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                <form asp-action="Delete" asp-route-id ="@Model.Magazaelemanno"asp-controller="Magazaelemani" method="post">
+                <input type="hidden" name="Magazaelemanno" value="@Model.Magazaelemanno" />
+                <td></td>
+                <td> @Model.Adi </td>
+                <td> @Model.Soyadi </td>
+    
+                <td>                
+                    @Model.MagazanoNavigation.Adi                       
+                </td>
+                <td>
+                
+                <button type="submit" class="btn btn-danger">Sil</button>
+                </td>
+
+                </form>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

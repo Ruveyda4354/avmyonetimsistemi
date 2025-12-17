@@ -1,0 +1,76 @@
+@model VeriTabaniProje.Models.Magaza
+@section Styles {
+    <link rel="stylesheet" href="/css/kat.css">
+}
+
+<div class="kat-background">
+    <h2 style="color:white;">@Model.Magazano. - Nolu Magaza Düzenleme</h2>
+    <div class="main-content w-100" style="padding-top:20px;">
+        <div class=" w-100">
+            <table class="table table-stripped table-dark border">
+                <thead>
+                    <tr>                  
+                    <th scope="col">Magaza No</th>
+                    <th scope="col">Magaza Adı</th>
+                    <th scope="col">Müdür</th>
+                    <th scope="col">Magaza Sahibi</th>
+                    <th scope="col">Elemanlar</th>
+                    <th scope="col">Ürünler</th>
+                    <th scope="col">Stok</th>
+                    <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                <form asp-action="Delete" asp-route-id="@Model.Magazano" asp-controller="Magaza" method="post">
+                <input type="hidden" name="Magazano" value="@Model.Magazano" />
+                <td></td>
+                
+                <td>                
+                    @Model.Magazano                       
+                </td>
+                <td> @Model.Adi </td>
+                <td> @Model.MagazamudurunoNavigation.Adi  @Model.MagazamudurunoNavigation.Soyadi </td>
+                <td> @Model.MagazasahibinoNavigation.Adi  @Model.MagazasahibinoNavigation.Soyadi </td>
+
+                <td>
+              <ul>
+               @foreach(Magazaelemani me in Model.Magazaelemanis)
+               {
+                <li>
+                @me.Adi @me.Soyadi
+                </li>
+               }
+              </ul>
+              </td>
+
+              <td>
+              <ul>
+               @foreach(Urunler u in Model.Urunnos)
+               {
+                <li>
+                @u.Adi
+                </li>
+               }
+              </ul>
+              </td>
+               <td>
+              <ul>
+               @foreach(Urunler u in Model.Urunnos)
+               {
+                <li>
+                @u.Stok
+                </li>
+               }
+              </ul>
+                
+                <button type="submit" class="btn btn-danger">Sil</button>
+                </td>
+
+                </form>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

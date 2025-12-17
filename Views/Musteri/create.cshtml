@@ -1,0 +1,54 @@
+@model VeriTabaniProje.Models.MusteriEditViewModel
+
+@section Styles {
+	<link rel="stylesheet" href="/css/kat.css" />
+}
+<div class="kat-background">
+	<div class="d-flex justify-content-between w-100">
+		<h2>Müşteri Ekle</h2>
+		<a asp-action="Index" class="btn btn-secondary mt-1">Geri</a>
+	</div>
+	<div class="main-content w-100" style="padding-top:20px;">
+		<div class="w-100 container">
+
+			<form asp-action="Create" method="post">
+				@Html.AntiForgeryToken()
+				<input type="hidden" asp-for="Id" />
+
+				<table class="table table-stripped table-dark border">
+					<thead>
+						<tr>
+							<th style="width:50%">Adı</th>
+							<th style="width:20%">Soyad</th>
+							<th>Magaza</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<input type="text" name="Ad" class="form-control text-center"
+									placeholder="Ad" required />
+							</td>
+							<td>
+							<input type="text" name="Soyad" class="form-control text-center"
+									placeholder="Soyad" required />
+							</td>
+								<td>
+								<select asp-for="SecilenMagazaIdler" class="form-control" asp-items="Model.MagazaList">
+            <option value="">-- Seçiniz --</option>
+        </select>
+							</td>
+							 
+							<td>
+								<button type="submit" class="btn btn-success">
+									<i class="bi bi-check-circle"></i>Kaydet</button>
+							</td>
+						
+						</tr>
+					</tbody>
+				</table>
+			</form>
+		</div>
+	</div>
+</div>

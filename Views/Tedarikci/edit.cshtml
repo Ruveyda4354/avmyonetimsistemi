@@ -1,0 +1,71 @@
+@model VeriTabaniProje.Models.TedarikciEditViewModel
+@section Styles {
+    <link rel="stylesheet" href="/css/kat.css">
+}
+
+<div class="kat-background">
+    <h2 style="color:white;">@Model.Id - Nolu Tedarikçi Düzenleme</h2>
+
+    <form asp-action="Edit" asp-controller="Tedarikci" enctype="multipart/form-data" method="post">
+        @Html.AntiForgeryToken()
+        <input type="hidden" name="Id" value="@Model.Id" />
+
+        <div class="main-content w-100" style="padding-top:20px;">
+            <div class="w-100">
+                <table class="table table-striped table-dark border">
+                    <thead>
+                        <tr>
+                            <th>Profil</th>
+                            <th>Adı</th>
+                            <th>Soyadı</th>
+                            <th>Mağazalar</th>
+                            <th>İşlem</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                @if (!string.IsNullOrEmpty(Model.Profilfoto))
+                                {
+                                    <img src="~/images/profil/profil/@Model.Profilfoto" alt="profil Foto"
+                                        style="width:50px; height:50px; border-radius:50%; margin-right:10px; object-fit:cover;">
+                                }
+                                <input type="file" name="Foto" class="form-control mt-2" />
+                            </td>
+
+                            <td>
+                                <input type="text" asp-for="Adi" class="form-control" />
+                            </td>
+
+                            <td>
+                                <input type="text" asp-for="Soyadi" class="form-control" />
+                            </td>
+
+                            <td>
+                                @if (Model.SecilenMagazaIdList != null && Model.SecilenMagazaIdList.Count > 0)
+                                {
+                                    @for (int i = 0; i < Model.SecilenMagazaIdList.Count; i++)
+                                    {
+                                        <div class="mb-2">
+                                            <select name="SecilenMagazaIdList" class="form-control"
+                                                asp-items="@(new SelectList(Model.MagazaList, "Value", "Text", Model.SecilenMagazaIdList[i]))">
+                                            </select>
+                                        </div>
+                                    }
+                                }
+                                else
+                                {
+                                    <span class="text-warning">Hiç mağaza atanmamış.</span>
+                                }
+                            </td>
+
+                            <td>
+                                <button type="submit" class="btn btn-success">Güncelle</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,14 @@
+@model List<VeriTabaniProje.Models.Magaza>
+
+<div class="d-flex flex-column p-3 text-bg-dark " style="height: 100vh">
+    <ul class="nav nav-pills flex-column mb-auto">
+        @foreach(Magaza magaza in Model){
+            <li class="nav-item">
+            <a asp-asp-controller="Magaza" asp-action="Index" class="nav-link text-white">
+            <i class="bi bi-dot"></i>
+            @magaza.Adi
+            </a>
+        </li>
+        }
+    </ul>
+</div>
